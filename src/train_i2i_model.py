@@ -25,7 +25,6 @@ if __name__ == "__main__":
     product_encoder = ProductEncoder(cfg.PRODUCT_CSV_PATH)
 
     rows = []
-    # read half of data to train item2item model
     for i in range(15):
         for js in tqdm((json.loads(s) for s in open(get_shard_path(i)))):
             rows.append(make_coo_row(js["transaction_history"], product_encoder))
