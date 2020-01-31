@@ -1,9 +1,7 @@
 import hashlib
 from typing import List, Set
-
 import numpy as np
 import pandas as pd
-import torch
 from scipy import sparse as sp
 
 import src.config as cfg
@@ -32,13 +30,6 @@ class ProductEncoder:
     @property
     def num_products(self):
         return len(self.product_idx)
-
-
-class TrainingSample:
-    def __init__(self, row: sp.coo_matrix, target_items: Set[int], client_id: str = None):
-        self.row = row
-        self.target_items = target_items
-        self.client_id = client_id
 
 
 def make_coo_row(transaction_history, product_encoder: ProductEncoder):
